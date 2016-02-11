@@ -193,3 +193,5 @@ grails.plugins.springsecurity.useSecurityEventListener = true
 grails.plugins.springsecurity.onAuthenticationSuccessEvent = { evt, appCtx ->
     appCtx.grailsEvents.event 'security', 'onUserLogin' , evt
 }
+
+
