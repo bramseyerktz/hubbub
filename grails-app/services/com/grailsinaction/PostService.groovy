@@ -9,6 +9,7 @@ class PostException extends RuntimeException{ //Forces transaction to roll back 
 
 @Transactional //Rolls back database changes if errors occurs
 class PostService {
+    //static transactional = true
 
     Post createPost(String loginId, String content){
         def user = User.findByLoginId(loginId)
@@ -34,12 +35,12 @@ class PostService {
                 }
                 else{
                     throw new PostException(
-                        message: "Reply-to user not found", post: post)
+                            message: "Reply-to user not found", post: post)
                 }
             }
+            //event 'onNewPost', post
+            return post
         }
-
         throw new PostException(message: "Invalid User Id")
-
     }
 }

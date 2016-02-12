@@ -20,7 +20,7 @@ class PostServiceSpec extends Specification {
     def "Valid post get saved and added to the user"(){
         given: "A new user in the db"
         User chuck = new User(loginId: "chuck_norris")
-        chuck.passwordHash = "ksadhfkasjdfh"
+        chuck.passwordHash = "password"
         chuck.save(failOnError: true)
 
         when: "a new post is created by the service"
@@ -34,7 +34,7 @@ class PostServiceSpec extends Specification {
     def "Invalid posts generate exceptional outcomes"(){
         given: "A new user in the db"
         User chuck = new User(loginId: "chuck_norris")
-        chuck.passwordHash = "ksadhfkasjdfh"
+        chuck.passwordHash = "password"
         chuck.save(failOnError: true)
 
         when: "an invalid post is attempted"

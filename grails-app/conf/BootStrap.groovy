@@ -74,7 +74,7 @@ class BootStrap {
         def now = new Date()
         def chuck = new User(
                 loginId: "chuck_norris",
-                passwordHash: springSecurityService.encodePassword("highkick"),
+                passwordHash: springSecurityService.encodePassword("password"),
                 profile: new Profile(fullName: "Chuck Norris", email: "chuck@nowhere.net"),
                 dateCreated: now).save(failOnError: true)
         def glen = new User(

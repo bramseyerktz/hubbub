@@ -6,9 +6,11 @@ import grails.rest.Resource
 class Post {
     String content
     Date dateCreated
+    Boolean moderated = false
 
-    static constbraints = {
+    static constraints = {
         content blank: false
+        moderated bindable: false
     }
     static belongsTo = [user : User] // Points to the owning object
     static hasMany = [tags : Tag] //Models a Post with many Tags

@@ -79,7 +79,7 @@ class UserController {
         }
     }
 
-    def profile(String id){
+    /*def profile(String id){
         def user = User.findByLoginId(id)
 
         if(!user){
@@ -92,16 +92,16 @@ class UserController {
                  return [profile : profile]
              }
         }
-    }
+    }*/
 
-    /*def profile(String id) {
+    def profile(String id) {
         def user = User.findByLoginId(id)
         if (user) {
             return [profile: user.profile]
         } else {
             response.sendError(404)
         }
-    }*/
+    }
 
     /*def welcomeEmail(){
         if(params.email){

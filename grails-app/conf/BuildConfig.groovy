@@ -128,5 +128,9 @@ grails.project.dependency.resolution = {
         //compile ":less-asset-pipeline:1.5.3"
         //compile ":coffee-asset-pipeline:1.5.0"
         //compile ":handlebars-asset-pipeline:1.3.0.1"
+
+        //data base noSql redis
+        compile ":redis:1.3.3"
+
     }
 }

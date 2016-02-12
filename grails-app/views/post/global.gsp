@@ -1,50 +1,37 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Usuario
+  User: Brian
   Date: 15/01/2016
-  Time: 10:18
+  Time: 10:19 AM
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-    <head>
-        <title>
-            Global Timeline
-        </title>
-        <meta name="layout" content="main"/>
+<head>
+    <title>Global Timeline</title>
+    <meta name="layout" content="main"/>
+</head>
 
-        <g:javascript>
-            function clearPost(e) {
-                $('#postContent').val('');
-            }
-            function showSpinner(visible) {
-                if (visible) $('#spinner').show();
-                else $('#spinner').hide();
-            }
-            function addTinyUrl(data) {
-                var tinyUrl = data.urls.small;
-                var postBox = $("#postContent")
-                postBox.val(postBox.val() + tinyUrl);
-                toggleTinyUrl();
-                $("#tinyUrl input[name='fullUrl']").val('');
-            }
-        </g:javascript>
-    </head>
+<body>
+<sec:ifLoggedIn>
+    <g:form name="logoutForm" controller="logout" action="index">
+        <g:submitButton name="signOut" value="sign out"/>
+    </g:form>
+</sec:ifLoggedIn>
 
-    <body>
-        <h1>Global Timeline</h1>
-
-        <g:if test="${flash.message}">
-            <div class="flash">
-                ${flash.message}
+<div id="allPosts">
+    <g:each in="${posts}" var="post">
+        <div class="postEntry">
+            <div class="postText">
+                ${post.content}
             </div>
-        </g:if>
-
-        <g:render template="newPost" model="[user : user]"/>
-
-        <div id="allPosts">
-           <g:render template="postEntry" collection="${posts}"/>
+            <div class="postDate">
+                <!--${post.dateCreated}-->
+                <hub:dateFromNow date="${post.dateCreated}"/>
+            </div>
         </div>
-        <g:paginate action="global" total="${postCount}" max="5" />
-    </body>
+    </g:each>
+</div>
+<g:paginate action="global" total="${postCount}" max="3"/>
+</body>
 </html>
